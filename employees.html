@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Assignment 05 - Employee Management Application</title>
-    <script src="js/employee-management.js"></script>
     <link rel="stylesheet" href="css/coatcheck.css">
 
 </head>
@@ -15,13 +14,13 @@
             <form action="javascript:void(0);">
                 <label>Name:</label> <input id="nameTyped" type="text">
                 <br>
-                <label>Title</label> <input id="badgeTyped" type="text">
+                <label>Title</label> <input id="titleTyped" type="text">
                 <br>
-                <label>Extension</label> <input id="badgeNumTyped" type="text">
+                <label>Extension</label> <input id="extensionTyped" type="text">
                 <br>
                 <input id="checkIn" type="submit" value="Add"><br>
-                <button type="button" id="exportToCsv">Click to Export to .csv File</button><br>
-                <button type="button" id="wipeTable">Click to Reset Table</button>
+                <p id="howManyShowing">
+                </p>
             </form>
     </div>
     <div>
@@ -48,5 +47,6 @@
         </table>
     </div>
 </section>
+<script src="js/employee-management.js"></script>
 </body>
 </html>

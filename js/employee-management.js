@@ -1,25 +1,55 @@
 /*eslint-env browser*/
 var command;
+var employeeList = [
+        "Zak Ruvalcaba",
+        "Sally Smith",
+        "Fred Franklin",
+        "John Smith",
+        "Jane Caruthers"];
 
-function displayMenu() {
+document.getElementById("checkIn").addEventListener("click",
+    function update() {
+        "use strict";
+        var time = new Date();
+        var timeNow = time.getHours() + ":" + time.getMinutes() + ":" + time.getSeconds();
+        if (document.getElementById("nameTyped").value === "" || document.getElementById("titleTyped").value === "" || document.getElementById("extensionTyped").value === "") {
+            window.alert("You need to fill out all three forms");
+        } else {
+            var name = document.getElementById("nameTyped").value;
+            var nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
+            employeeList.push([nameCapitalized, document.getElementById("titleTyped").value, document.getElementById("extensionTyped").value, "<input onclick='deleteEmployee(this)' type='button' class='tableButton' value='Return'>"]);
+//            clearTable();
+            showEmployees();
+//    optionally call the function to export data to Csv. It was annoying so I turned it off.
+//            exportToCsv();
+//            window.console.log(checkedInArray);
+
+
+//This clears the written input forms after the information is written to checkedInArray and focuses back on nameTyped at the top of the form
+            document.getElementById("nameTyped").value = "";
+            document.getElementById("titleTyped").value = "";
+            document.getElementById("extensionTyped").value = "";
+//            document.getElementById("nameTyped").focus();
+        }
+
+    }
+);
+
+
+var employeeList = [
+        "Zak Ruvalcaba",
+        "Sally Smith",
+        "Fred Franklin",
+        "John Smith",
+        "Jane Caruthers"];
+
+
+function showEmployees() {
     "use strict";
-    window.console.log("Welcome to the Employee Management System");
-    window.console.log("");
-    window.console.log("COMMAND MENU");
-    window.console.log("show - Show all employees");
-    window.console.log("add - Add a new employee");
-    window.console.log("del - Delete an existing employee");
-    window.console.log("exit - Exit the application");
-    window.console.log("");
-}
-function showEmployees(arg) {
-    "use strict";
-    var i = 1;
-    arg.forEach(function (employee) {
-        window.console.log(i + ". " + employee);
-        i += 1;
-    });
-    window.console.log("");
+    clearTable();
+    for (var i = 0; i < checkedInArray.length; i++) {
+        document.getElementById("checkedIn").innerHTML += "<tr><td>" + checkedInArray[i][0] + "</td> <td>" + checkedInArray[i][1] + "</td> <td>" + checkedInArray[i][2] + "</td><td>" + checkedInArray[i][3] + "</td><td>" + checkedInArray[i][4] + "</td></tr>";
+    }
 }
 function addEmployees(arg) {
     "use strict";
@@ -39,8 +69,8 @@ function deleteEmployees(arg) {
 }
 function main() {
     "use strict";
-    var employeeList, command;
-    displayMenu();
+//    var employeeList, command;
+//    displayMenu();
     
     employeeList = [
         "Zak Ruvalcaba",
@@ -68,4 +98,4 @@ function main() {
     }
 //    window.console.log("program terminated");
 //}
-main();
+//main();
