@@ -1,11 +1,11 @@
 /*eslint-env browser*/
 var command;
 var employeeList = [
-        ["Zak Ruvalcaba", "Instructor", "1", "<input onclick='deleteEmployee()' type='button' class='tableButton' value='Delete'>"],
-        ["Sally Smith", "Student", "2", "<input onclick='deleteEmployee()' type='button' class='tableButton' value='Delete'>"],
-        ["Fred Franklin", "Principle", "3", "<input onclick='deleteEmployee()' type='button' class='tableButton' value='Delete'>"],
-        ["John Smith", "Student", "4", "<input onclick='deleteEmployee()' type='button' class='tableButton' value='Delete'>"],
-        ["Jane Caruthers", "Receptionist", "5", "<input onclick='deleteEmployee()' type='button' class='tableButton' value='Delete'>"]
+        ["Zak Ruvalcaba", "Instructor", "1", "<input type='button' class='tableButton' value='Delete'>"],
+        ["Sally Smith", "Student", "2", "<input type='button' class='tableButton' value='Delete'>"],
+        ["Fred Franklin", "Principle", "3", "<input type='button' class='tableButton' value='Delete'>"],
+        ["John Smith", "Student", "4", "<input type='button' class='tableButton' value='Delete'>"],
+        ["Jane Caruthers", "Receptionist", "5", "<input type='button' class='tableButton' value='Delete'>"]
     ]
 
 window.addEventListener("load", showEmployees);
@@ -25,7 +25,7 @@ document.getElementById("addEmployee").addEventListener("click",
         } else {
             var name = document.getElementById("nameTyped").value;
             var nameCapitalized = name.charAt(0).toUpperCase() + name.slice(1);
-            employeeList.push([nameCapitalized, document.getElementById("titleTyped").value, document.getElementById("extensionTyped").value, "<input onclick='deleteEmployee(this)' type='button' class='tableButton' value='Delete'>"]);
+            employeeList.push([nameCapitalized, document.getElementById("titleTyped").value, document.getElementById("extensionTyped").value, "<input type='button' class='tableButton' value='Delete'>"]);
 //            clearTable();
             showEmployees();
 //            window.console.log(employeeList);
@@ -38,6 +38,10 @@ document.getElementById("addEmployee").addEventListener("click",
     }
 );
 
+document.getElementById("checkedIn").addEventListener("click", function () {
+    console.log(this);
+    window.a = this;
+})
 
 function deleteEmployee(arg) {
     "use strict";
@@ -52,6 +56,8 @@ function showEmployees() {
     for (var i = 0; i < employeeList.length; i++) {
         document.getElementById("checkedIn").innerHTML += "<tr><td>" + employeeList[i][0] + "</td> <td>" + employeeList[i][1] + "</td> <td>" + employeeList[i][2] + "</td><td>" + employeeList[i][3] + "</td></tr>";
     }
+    var employeeListLength = employeeList.length;
+    document.getElementById("howManyShowing").innerText = employeeListLength + " employees showing";
 }
 // function addEmployees(arg) {
 //     "use strict";
